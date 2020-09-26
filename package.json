@@ -1,0 +1,25 @@
+{
+  "name": "zwallet",
+  "version": "1.0.0",
+  "description": "Aplikasi zwallet dengan REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayuputrii/z-app.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "express",
+    "mysql"
+  ],
+  "author": "Ayu Armadani Putri Mahirun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayuputrii/z-app/issues"
+  },
+  "homepage": "https://github.com/ayuputrii/z-app#readme"
+}
