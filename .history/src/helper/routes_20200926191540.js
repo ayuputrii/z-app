@@ -6,9 +6,6 @@ module.exports = function(app) {
     app.route('/')
         .get(json.index);
 
-    app.route('/profile')
+    app.route('profile')
         .get(json.showprofile);
-
-    app.route('/profile')
-        .post(json.addprofile);
 }

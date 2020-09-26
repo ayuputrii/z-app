@@ -21,7 +21,6 @@ exports.showprofile = function(req, res) {
 // Add data field in Profile
 exports.addprofile = function(req, res) {
     const pin_confirm = req.body.pin_confirm
-    const photo = req.body.photo
     const first_name = req.body.first_name
     const last_name = req.body.last_name
     const verif_email = req.body.verif_email
