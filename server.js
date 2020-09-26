@@ -6,6 +6,12 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+// Get Routes
+const routes = require('./src/helper/routes');
+routes(app);
+
+
 app.listen(3000, () => {
     console.log('Running Success');
 });
