@@ -2,13 +2,37 @@
 
 module.exports = function(app) {
     const json = require('./controller');
-
-    app.route('/')
-        .get(json.index);
-
+    // Profile
     app.route('/profile')
         .get(json.showprofile);
 
+    app.route('/profile/:id')
+        .get(json.findprofile);
+
     app.route('/profile')
         .post(json.addprofile);
+
+    app.route('/profile')
+        .put(json.putprofile);
+
+    app.route('/profile')
+        .delete(json.deleteprofile);
+    // End Profile
+
+    // Transfer
+    app.route('/transfer')
+        .get(json.showtransfer);
+
+    app.route('/transfer/:name')
+        .get(json.findtransfer);
+
+    app.route('/transfer')
+        .post(json.addtransfer);
+
+    app.route('/transfer')
+        .put(json.puttransfer);
+
+    app.route('/transfer')
+        .delete(json.deletetransfer);
+    // End Transfer
 }
