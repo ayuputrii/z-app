@@ -35,4 +35,21 @@ module.exports = function(app) {
     app.route('/transfer')
         .delete(json.deletetransfer);
     // End Transfer
+
+    // Top Up
+    app.route('/topup')
+        .get(json.showtopup);
+
+    app.route('/topup/:id')
+        .get(json.findtopup);
+
+    app.route('/topup')
+        .post(json.addtopup);
+
+    app.route('/topup/:id_topup')
+        .put(json.puttopup);
+
+    app.route('/topup')
+        .delete(json.deltopup);
+    // End Top Up
 }

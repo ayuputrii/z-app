@@ -7,6 +7,8 @@ exports.index = function(req, res) {
     response.ok('Application REST API Success', res)
 };
 
+
+// Profile --------------
 // Show Data In Profile
 exports.showprofile = function(req, res) {
     connection.query('SELECT * FROM profile', function(error, rows, fields) {
@@ -22,7 +24,7 @@ exports.showprofile = function(req, res) {
 exports.findprofile = function(req, res) {
     let id = req.params.id;
     connection.query('SELECT * FROM profile WHERE id_profile = ?', [id],
-        function(error, rows, field) {
+        function(error, rows, fields) {
             if (error) {
                 connection.log(error)
             } else {
@@ -47,7 +49,7 @@ exports.addprofile = function(req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Success Add Data!", res);
+                response.ok("Successfully Add Data Profile!", res);
             }
         });
 };
@@ -68,7 +70,7 @@ exports.putprofile = function(req, res) {
             if (error) {
                 console.log(error)
             } else {
-                response.ok("Success Update", res)
+                response.ok("Successfully Update Data Profile", res)
             }
         })
 }
@@ -81,14 +83,14 @@ exports.deleteprofile = function(req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Suscces Delete", res)
+                response.ok("Susccesfully Delete Data Profile", res)
             }
         })
 }
 
+// End Profile -----------
 
-
-// Transfer ----------
+// Transfer --------------
 
 // Show Data In Tranfer
 exports.showtransfer = function(req, res) {
@@ -126,7 +128,7 @@ exports.addtransfer = function(req, res) {
             if (error) {
                 console.log(error)
             } else {
-                response.ok("Success Add Data Transfer", res)
+                response.ok("Successfully Add Data Transfer", res)
             }
         }
     )
@@ -144,7 +146,7 @@ exports.puttransfer = function(req, res) {
             if (error) {
                 console.log(error)
             } else {
-                response.ok("Success Update to Data Transfer", res)
+                response.ok("Successfully Update Data Transfer", res)
             }
         })
 
@@ -159,7 +161,83 @@ exports.deletetransfer = function(req, res) {
             if (error) {
                 console.log(error)
             } else {
-                response.ok("Success Add Data Transfer", res)
+                response.ok("Successfully Delete Data Transfer", res)
             }
         })
 }
+
+// End Transfer ---------------
+
+
+// Top Up ---------------------
+
+// Show Data In Top Up
+exports.showtopup = function(req, res) {
+    connection.query(`SELECT * FROM topup`, function(error, rows, fields) {
+        if (error) {
+            connection.log(error);
+        } else {
+            response.ok(rows, res);
+        }
+    })
+}
+
+// Shorting ID In Top Up
+exports.findtopup = function(req, res) {
+    let id = req.params.id;
+    connection.query(`SELECT *FROM topup WHERE id_topup = ?`, [id],
+        function(error, rows, fields) {
+            if (error) {
+                connection.log(error)
+            } else {
+                response.ok(rows, res)
+            }
+        })
+}
+
+// Add Data Field In Top Up
+exports.addtopup = function(req, res) {
+    const howto_topup = req.body.howto_topup
+
+    connection.query(`INSERT INTO topup (howto_topup) VALUES 
+    ('${howto_topup}')`,
+        function(error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Successfully Add Data Top Up", res);
+            }
+        })
+}
+
+// UPDATE Data Field In Top Up
+exports.puttopup = function(req, res) {
+    const id = req.body.id_topup
+    const howto_topup = req.body.howto_topup
+
+    connection.query(`UPDATE topup SET howto_topup = ? WHERE id_topup = ?`, [howto_topup, id],
+        function(error, rows, fields) {
+            if (error) {
+                console.log(error)
+            } else {
+                response.ok("Successfully Update Data Top Up", res)
+            }
+        })
+}
+
+// DELETE Data In Top Up
+exports.deltopup = function(req, res) {
+    const id_topup = req.body.id_topup
+
+    connection.query('DELETE FROM topup WHERE id_topup=?', [id_topup],
+        function(error, rows, fields) {
+            if (error) {
+                console.log(error)
+            } else {
+                response.ok("Successfully Delete Data Top Up", res)
+            }
+        })
+}
+
+
+// End Top Up -----------------
