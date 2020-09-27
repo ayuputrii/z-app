@@ -54,7 +54,7 @@ exports.addprofile = function(req, res) {
 
 // UPDATE Data in Profile
 exports.putprofile = function(req, res) {
-    const id_profile = req.body.id_profile
+    const id = req.params.id_profile
     const pin_confirm = req.body.pin_confirm
     const photo = req.body.photo
     const first_name = req.body.first_name
@@ -63,7 +63,7 @@ exports.putprofile = function(req, res) {
     const phone = req.body.phone
     const password = req.body.password
 
-    connection.query('UPDATE profile SET pin_confirm=?, photo=?, first_name=?, last_name=?, verif_email=?, phone=?, password=? WHERE id', [pin_confirm, photo, first_name, last_name, verif_email, phone, password, id_profile],
+    connection.query('UPDATE profile SET pin_confirm=?, photo=?, first_name=?, last_name=?, verif_email=?, phone=?, password=? WHERE id_profile = ?', [pin_confirm, photo, first_name, last_name, verif_email, phone, password, id],
         function(error, rows, fields) {
             if (error) {
                 console.log(error)
@@ -134,12 +134,12 @@ exports.addtransfer = function(req, res) {
 
 // UPDATE Data Field In Transfer
 exports.puttransfer = function(req, res) {
-    const id_transfer = req.body.id_transfer
+    const id = req.body.id_transfer
     const pin = req.body.pin
     const amount = req.body.amount
     const balance_left = req.body.balance_left
 
-    connection.query(`UPDATE transfer SET pin = ?, amount = ?, balance_left = ? WHERE id_transfer = ?`, [pin, amount, balance_left, id_transfer],
+    connection.query(`UPDATE transfer SET pin = ?, amount = ?, balance_left = ? WHERE id_transfer = ?`, [pin, amount, balance_left, id],
         function(error, rows, fields) {
             if (error) {
                 console.log(error)

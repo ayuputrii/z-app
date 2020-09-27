@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.route('/profile')
         .post(json.addprofile);
 
-    app.route('/profile')
+    app.route('/profile/:id_profile')
         .put(json.putprofile);
 
     app.route('/profile')
@@ -29,7 +29,7 @@ module.exports = function(app) {
     app.route('/transfer')
         .post(json.addtransfer);
 
-    app.route('/transfer')
+    app.route('/transfer/:id_transfer')
         .put(json.puttransfer);
 
     app.route('/transfer')
