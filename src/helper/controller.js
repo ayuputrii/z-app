@@ -54,7 +54,7 @@ exports.addprofile = function(req, res) {
         });
 };
 
-// UPDATE Data in Profile
+// UPDATE PUT Data in Profile
 exports.putprofile = function(req, res) {
     const id = req.params.id_profile
     const pin_confirm = req.body.pin_confirm
@@ -74,6 +74,46 @@ exports.putprofile = function(req, res) {
             }
         })
 }
+
+// UPDATE PATCH Data In Profile
+exports.patchprofile = function(req, res) {
+    const id = req.params.id_profile
+    const pin_confirm = req.body.pin_confirm
+    const photo = req.body.photo
+    const first_name = req.body.first_name
+    const last_name = req.body.last_name
+    const verif_email = req.body.verif_email
+    const phone = req.body.phone
+    const password = req.body.password
+    connection.query(`SELECT * FROM profile WHERE id_profile=${id}`,
+        function(err, result, fields) {
+            if (!err) {
+                if (result.length) {
+                    const data = Object.entries(req.body).map((item) => {
+                        return parseInt(item[1]) > 0 ?
+                            `${item[0]}=${item[1]}` :
+                            `${item[0]}='${item[1]}'`;
+                    });
+                    console.log(data)
+                    let query = `UPDATE profile SET ${data} WHERE id_profile=${id}`;
+                    connection.query(query, (err, result, fields) => {
+                        if (result.affectedRows) {
+                            response.ok(`Profile ${id} Succesfully updated`, res)
+                        } else {
+                            response.status("Failed update profile".res)
+                        }
+                    });
+                } else {
+                    response.status("id not found", res);
+                }
+            } else {
+                console.log(err);
+                response.statusfail("Failed update profile", res);
+            }
+        });
+
+};
+
 
 // DELETE Data In Profile
 exports.deleteprofile = function(req, res) {
@@ -134,7 +174,7 @@ exports.addtransfer = function(req, res) {
     )
 }
 
-// UPDATE Data Field In Transfer
+// UPDATE PUT Data Field In Transfer
 exports.puttransfer = function(req, res) {
     const id = req.body.id_transfer
     const pin = req.body.pin
@@ -151,6 +191,42 @@ exports.puttransfer = function(req, res) {
         })
 
 }
+
+// UPDATE PATCH Data In Transfer
+exports.patchtransfer = function(req, res) {
+    const id = req.params.id_transfer
+    const pin = req.body.pin
+    const amount = req.body.amount
+    const balance_left = req.body.balance_left
+
+    connection.query(`SELECT * FROM transfer WHERE id_transfer=${id}`,
+        function(err, result, fields) {
+            if (!err) {
+                if (result.length) {
+                    const data = Object.entries(req.body).map((item) => {
+                        return parseInt(item[1]) > 0 ?
+                            `${item[0]}=${item[1]}` :
+                            `${item[0]}='${item[1]}'`;
+                    });
+                    console.log(data)
+                    let query = `UPDATE transfer SET ${data} WHERE id_transfer=${id}`;
+                    connection.query(query, (err, result, fields) => {
+                        if (result.affectedRows) {
+                            response.ok(`Transfer ${id} Succesfully updated`, res)
+                        } else {
+                            response.status("Failed update transfer".res)
+                        }
+                    });
+                } else {
+                    response.status("id not found", res);
+                }
+            } else {
+                console.log(err);
+                response.statusfail("Failed update transfer", res);
+            }
+        });
+
+};
 
 // DELETE Data In Transfer
 exports.deletetransfer = function(req, res) {
@@ -210,7 +286,7 @@ exports.addtopup = function(req, res) {
         })
 }
 
-// UPDATE Data Field In Top Up
+// UPDATE PUT Data Field In Top Up
 exports.puttopup = function(req, res) {
     const id = req.body.id_topup
     const howto_topup = req.body.howto_topup
@@ -224,6 +300,40 @@ exports.puttopup = function(req, res) {
             }
         })
 }
+
+// UPDATE PATCH Data Field In Top Up
+exports.patchtopup = function(req, res) {
+    const id = req.params.id_topup
+    const howto_topup = req.body.howto_topup
+
+    connection.query(`SELECT * FROM topup WHERE id_topup=${id}`,
+        function(err, result, fields) {
+            if (!err) {
+                if (result.length) {
+                    const data = Object.entries(req.body).map((item) => {
+                        return parseInt(item[1]) > 0 ?
+                            `${item[0]}=${item[1]}` :
+                            `${item[0]}='${item[1]}'`;
+                    });
+                    console.log(data)
+                    let query = `UPDATE topup SET ${data} WHERE id_topup=${id}`;
+                    connection.query(query, (err, result, fields) => {
+                        if (result.affectedRows) {
+                            response.ok(`Top Up ${id} Succesfully updated`, res)
+                        } else {
+                            response.status("Failed update Top Up".res)
+                        }
+                    });
+                } else {
+                    response.status("id not found", res);
+                }
+            } else {
+                console.log(err);
+                response.statusfail("Failed update Top Up", res);
+            }
+        });
+
+};
 
 // DELETE Data In Top Up
 exports.deltopup = function(req, res) {

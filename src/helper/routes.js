@@ -15,6 +15,9 @@ module.exports = function(app) {
     app.route('/profile/:id_profile')
         .put(json.putprofile);
 
+    app.route('/profile/:id_profile')
+        .patch(json.patchprofile);
+
     app.route('/profile')
         .delete(json.deleteprofile);
     // End Profile
@@ -32,6 +35,9 @@ module.exports = function(app) {
     app.route('/transfer/:id_transfer')
         .put(json.puttransfer);
 
+    app.route('/transfer/:id_transfer')
+        .patch(json.patchtransfer);
+
     app.route('/transfer')
         .delete(json.deletetransfer);
     // End Transfer
@@ -48,6 +54,9 @@ module.exports = function(app) {
 
     app.route('/topup/:id_topup')
         .put(json.puttopup);
+
+    app.route('/topup/:id_topup')
+        .patch(json.patchtopup);
 
     app.route('/topup')
         .delete(json.deltopup);
