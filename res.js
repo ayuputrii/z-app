@@ -9,9 +9,9 @@ exports.ok = function(values, res) {
     res.end();
 }
 
-exports.status = function(values, res) {
+exports.error = function(values, res) {
     const data = {
-        'status': 400,
+        'status': 500,
         'success': false,
         'values': values,
     };
@@ -19,9 +19,9 @@ exports.status = function(values, res) {
     res.send();
 }
 
-exports.statusfail = function(value, res) {
+exports.status = function(values, res) {
     const data = {
-        'status': 500,
+        'status': 400,
         'success': false,
         'values': values,
     };

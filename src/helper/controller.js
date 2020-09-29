@@ -108,7 +108,7 @@ exports.patchprofile = function(req, res) {
                 }
             } else {
                 console.log(err);
-                response.statusfail("Failed update profile", res);
+                response.error("Failed update profile", res);
             }
         });
 
@@ -222,7 +222,7 @@ exports.patchtransfer = function(req, res) {
                 }
             } else {
                 console.log(err);
-                response.statusfail("Failed update transfer", res);
+                response.error("Failed update transfer", res);
             }
         });
 
@@ -329,7 +329,7 @@ exports.patchtopup = function(req, res) {
                 }
             } else {
                 console.log(err);
-                response.statusfail("Failed update Top Up", res);
+                response.error("Failed update Top Up", res);
             }
         });
 
