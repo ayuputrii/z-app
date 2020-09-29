@@ -49,7 +49,7 @@ exports.addprofile = function(req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Successfully Add Data Profile!", res);
+                response.create("Successfully Add Data Profile!", res);
             }
         });
 };
@@ -168,7 +168,7 @@ exports.addtransfer = function(req, res) {
             if (error) {
                 console.log(error)
             } else {
-                response.ok("Successfully Add Data Transfer", res)
+                response.create("Successfully Add Data Transfer", res)
             }
         }
     )
@@ -261,7 +261,7 @@ exports.showtopup = function(req, res) {
 // Shorting ID In Top Up
 exports.findtopup = function(req, res) {
     let id = req.params.id;
-    connection.query(`SELECT *FROM topup WHERE id_topup = ?`, [id],
+    connection.query(`SELECT * FROM topup WHERE id_topup = ?`, [id],
         function(error, rows, fields) {
             if (error) {
                 connection.log(error)
@@ -281,7 +281,7 @@ exports.addtopup = function(req, res) {
             if (error) {
                 console.log(error);
             } else {
-                response.ok("Successfully Add Data Top Up", res);
+                response.create("Successfully Add Data Top Up", res);
             }
         })
 }

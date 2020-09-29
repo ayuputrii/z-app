@@ -9,6 +9,15 @@ exports.ok = function(values, res) {
     res.end();
 }
 
+exports.create = function(values, res) {
+    const data = {
+        'status': 201,
+        'values': values,
+    }
+
+    res.json(data);
+    res.end();
+}
 exports.error = function(values, res) {
     const data = {
         'status': 500,
@@ -19,6 +28,12 @@ exports.error = function(values, res) {
     res.send();
 }
 
+exports.put = function(values, res) {
+    const data = {
+        'status': 201,
+        'values': values,
+    }
+}
 exports.status = function(values, res) {
     const data = {
         'status': 400,
