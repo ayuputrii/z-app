@@ -146,7 +146,7 @@ exports.showtransfer = function(req, res) {
 // Shorting Name In Transfer
 exports.findtransfer = function(req, res) {
     let name = req.params.name;
-    connection.query('SELECT * FROM profile WHERE first_name = ?', [name],
+    connection.query(`SELECT * FROM profile WHERE first_name LIKE '${name}%' ORDER BY first_name ASC`, [name],
         function(error, rows, field) {
             if (error) {
                 connection.log(error)
