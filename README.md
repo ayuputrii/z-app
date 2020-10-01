@@ -11,3 +11,14 @@ Tools:
 2. Express JS
 3. Api
 4. My SQL
+
+
+Tutorial
+_______________
+
+Before starting the program, please you install packages and othe features:
+- npm init -y (Installation Package.json)
+- npm i mysql express body-parser (Installation body parser and mysql)
+
+Finish installed, running program:
+- node <file/folder program>
